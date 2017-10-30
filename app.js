@@ -12,15 +12,23 @@
     this.products = gems;
   });
 
-  app.controller("TabController", function() {
-    this.tab = 1;
 
-    this.isSet = function(checkTab) {
-      return this.tab === checkTab;
-    };
+  app.directive("productTabs", function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'product-tabs.html',
+      controller: function() {
+        this.tab = 1;
 
-    this.setTab = function(setTab) {
-      this.tab = setTab;
+        this.isSet = function(checkTab) {
+          return this.tab === checkTab;
+        };
+
+        this.setTab = function(setTab) {
+          this.tab = setTab;
+        };
+      },
+      controllerAs: 'tab'
     };
   });
 
@@ -57,7 +65,7 @@
       templateUrl: "product-specs.html"
     };
   });
-  
+
   var gems = [{
       name: 'Azurite',
       description: "Some gems have hidden qualities beyond their luster, beyond their shine... Azurite is one of those gems.",
